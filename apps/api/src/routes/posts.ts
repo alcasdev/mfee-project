@@ -1,26 +1,27 @@
 import express from 'express';
+import postsController from '../controllers/post';
 
 const router = express.Router();
 
 // Create a post
-router.post('/', /* TODO */);
+router.post('/', postsController.createPost);
 
 // Create a post comment
-router.post('/:id/comments', /* TODO */);
+router.post('/:id/comments', postsController.createPostComment);
 
 // Get a post by id
-router.get('/:id', /* TODO */);
+router.get('/:id', postsController.getPostById);
 
 // Update a post
-router.patch('/:id', /* TODO */);
+router.patch('/:id', postsController.updatePostById);
 
 // Get all posts
-router.get('/', /* TODO */);
+router.get('/', postsController.getAllPosts);
 
 // Delete a post
-router.delete('/:id', /* TODO */);
+router.delete('/:id', postsController.deletePostById);
 
 // Get posts by category
-router.get('/category/:category', /* TODO */);
+router.get('/category/:category', postsController.getPostsByCategory);
 
 export default router;

@@ -1,11 +1,11 @@
-import mongoose, { Document, Schema } from 'mongoose';
+import mongoose, { Document, Schema, Types } from 'mongoose';
 
 interface IPost extends Document {
   title: string;
   image: string;
   description: string;
-  category: string;
-  comments: string;
+  category: Types.ObjectId;
+  comments: [Types.ObjectId];
 }
 
 export const postSchema = new Schema<IPost>(
@@ -23,12 +23,11 @@ export const postSchema = new Schema<IPost>(
       required: [true, 'Property is required']
     },
     category: {
-      type: String,
+      type: Schema.Types.ObjectId, ref: 'Category',
       required: [true, 'Property is required']
     },
     comments: {
-      type: String,
-      required: [true, 'Property is required']
+      type: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
     }
   },
   {
